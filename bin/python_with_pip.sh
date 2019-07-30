@@ -6,7 +6,7 @@ wget https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz
 tar zxfv Python-3.4.5.tgz
 find $build/Python-3.4.5/Python -type d | xargs chmod 0755
 cd Python-3.4.5/
-./configure --prefix=$build/Python-3.4.5/python
+./configure --prefix=$build/python
 make
 make install
 export PATH=$build/Python-3.4.5/:$PATH
@@ -20,4 +20,4 @@ echo 'Testing python'
 python -V
 pip -V
 ls -ltr $build
-$build/Python-3.4.5/python/bin/pip3 install -r $build/requirement.txt
+$build/python/bin/pip3 install -r $build/requirement.txt
