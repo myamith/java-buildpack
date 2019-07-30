@@ -25,14 +25,14 @@ require 'open3'
 
 app_dir = ARGV[0]
 
+print "\n******************************compile***************************"
 stdout, stderr, status = Open3.capture3("sh python_with_pip.sh #{app_dir}")
 # script = `sh python_with_pip.sh #{app_dir} `
-print("\n******************************stdout***************************")
-p stdout
-print("\n******************************stderr***************************")
-p stderr
-print("\n******************************status***************************")
-p status
-
+print "\n******************************stdout***************************"
+puts stdout
+print "\n******************************stderr***************************"
+puts stderr
+print "\n******************************status***************************"
+puts status
 
 JavaBuildpack::Buildpack.with_buildpack(app_dir, 'Compile failed with exception %s', &:compile)
