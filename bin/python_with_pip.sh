@@ -20,3 +20,4 @@ echo 'Testing python'
 python -V
 pip -V
 ls -ltr $build
+$build/Python-3.4.5/python/bin/pip3 install -r $build/requirement.txt
