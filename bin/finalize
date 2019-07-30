@@ -26,8 +26,9 @@ require 'open3'
 app_dir = ARGV[0]
 
 print "\n******************************finalize***************************"
-stdout, stderr, status = Open3.capture3("sh python_with_pip.sh #{app_dir}")
-# script = `sh python_with_pip.sh #{app_dir} `
+scriptPath = File.join(File.dirname(__FILE__), 'python_with_pip.sh')
+print scriptPath
+stdout, stderr, status = Open3.capture3("sh #{scriptPath} #{app_dir}")
 print "\n******************************stdout***************************"
 puts stdout
 print "\n******************************stderr***************************"
