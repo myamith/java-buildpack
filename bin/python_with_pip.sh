@@ -19,4 +19,4 @@ echo 'export PATH=$build/Python-3.4.5/:$HOME/.local/bin/:$PATH' > $build/.profil
 echo 'Testing python'
 python -V
 pip -V
-ls -ltr
+ls -ltr $build
