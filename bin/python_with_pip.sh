@@ -12,12 +12,16 @@ make
 make install
 export PATH=$build/python-all/Python-3.6.9:$PATH
 Python -V
-echo '****Installing pip*******'
-wget https://bootstrap.pypa.io/get-pip.py
-$build/python-all/Python-3.6.9/python get-pip.py --user
-export PATH=$HOME/.local/bin/:$PATH
-echo 'Testing python'
-python -V
-pip -V
+#wget https://bootstrap.pypa.io/get-pip.py
+#python get-pip.py --user
+#export PATH=$HOME/.local/bin/:$PATH
 ls -ltr $build
-$build/python-all/new_python/bin/pip3 install -r $build/requirements.txt
+mkdir -p $build_dir/.profile.d
+echo 'export PATH=/app/python-all/Python-3.6.9:/app/usr/local/bin:$PATH' > $build_dir/.profile.d/python.sh
+echo 'wget https://bootstrap.pypa.io/get-pip.py' >> $build_dir/.profile.d/python.sh
+echo 'python /app/python-all/Python-3.6.9/get-pip.py --user' >> $build_dir/.profile.d/python.sh
+echo 'export PATH=$HOME/.local/bin/:$PATH' >> $build_dir/.profile.d/python.sh
+echo 'mkdir -p /tmp/app/python-all/new_python/bin && ln -s /app/python-all/new_python/bin/python3.6 /tmp/app/python-all/new_python/bin/python3.6' >> $build_dir/.profile.d/python.sh
+echo 'export PYTHONPATH="${PYTHONPATH}:/app/python-all/new_python/lib/python3.6/site-packages"' >> $build_dir/.profile.d/python.sh
+echo 'pip install -r /app/requirements.txt' >> $build_dir/.profile.d/python.sh
+
